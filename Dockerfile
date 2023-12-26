@@ -11,9 +11,6 @@ RUN npm install
 # Copy all other files
 COPY . .
 
-
-
-
 # Expose port (80 is typical for web applications)
 EXPOSE 80
 
