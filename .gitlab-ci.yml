@@ -23,7 +23,7 @@ container_deploy1:
         echo "Removing container using port 1010: $EXISTING_CONTAINER"
         docker container rm -f "$EXISTING_CONTAINER"
       fi
-      # Remove existing shadow container if it exists
+      #  Remove existing shadow container if it exists
       if docker container ls -a | grep -q "$SHADOW_CONTAINER"; then
         echo "Removing existing shadow container $SHADOW_CONTAINER"
         docker container rm -f "$SHADOW_CONTAINER"
