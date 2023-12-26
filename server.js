@@ -1,8 +1,18 @@
+// server.js
 const express = require('express');
-const fs = require('fs');
 
-
-
-
+// Create an express application
 const app = express();
+
+// Specify the port to listen on
 const port = 80;
+
+// Define a route for the root path
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+// Start the server and listen on the specified port
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
