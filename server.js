@@ -9,7 +9,7 @@ const port = 80;
 
 // Define a route for the root path
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
 // Start the server and listen on the specified port
