@@ -1,0 +1,36 @@
+stages:
+  - build
+  - deploy
+
+image_build:
+  stage: build
+  script:
+    - echo "Stage build, Dockerfile:"
+    - cat Dockerfile
+    - docker build -t fastapi:$CI_PIPELINE_ID .
+
+
+
+container_deploy1:
+    stage: deploy
+    script:
+    - echo "Deploying shadow application for observation"
+    - |
+      SHADOW_CONTAINER="shadow-fastapi-$CI_PIPELINE_ID"
+      # Check if a container is using port 2020 and remove it
+      EXISTING_CONTAINER=$(docker container ls -a --filter "publish=1010" --format "{{.Names}}")
+      if [ ! -z "$EXISTING_CONTAINER" ] && [ "$EXISTING_CONTAINER" != "$SHADOW_CONTAINER" ]; then
+        echo "Removing container using port 1010: $EXISTING_CONTAINER"
+        docker container rm -f "$EXISTING_CONTAINER"
+      fi
+      # Remove existing shadow container if it exists
+      if docker container ls -a | grep -q "$SHADOW_CONTAINER"; then
+        echo "Removing existing shadow container $SHADOW_CONTAINER"
+        docker container rm -f "$SHADOW_CONTAINER"
+      fi
+      # Now attempt to run the new shadow FastAPI container
+      echo "Running new shadow FastAPI container $SHADOW_CONTAINER"
+      docker run -d -p 2020:80 --name "$SHADOW_CONTAINER" fastapi:$CI_PIPELINE_ID
+    - sleep 10 # Simulate a delay for the shadow environment to stabilize
+    
+
