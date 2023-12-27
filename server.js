@@ -1,6 +1,4 @@
-// server.js
 const express = require('express');
-const path = require('path'); // Import the path module
 
 // Create an express application
 const app = express();
@@ -10,8 +8,8 @@ const port = 80;
 
 // Define the route for the root path
 app.get('/', (req, res) => {
-  // Replace 'public/index.html' with the actual path to your HTML file
-  res.sendFile(path.join(__dirname, 'index.html'));
+  // Since index.html is in the same directory as your server.js file, you can reference it directly
+  res.sendFile(__dirname + '/index.html');
 });
 
 // Start the server and listen on the specified port
