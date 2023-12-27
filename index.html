@@ -232,17 +232,22 @@ body {
 <body>
 
 <header class="site-header">
+  <!-- Skip to main content button -->
+  <div id = "skip-to-main">
+    <button className="btn btn-default"><a href = "#main-content">Skip to main content</a></button>
+</div>
+  <nav>
   <div class="container-fluid">
     <div class="row align-items-center">
       <div class="col">
-        <div class="logo">
+        <div role="banner" class="logo">
           <!-- Replace with your actual logo image -->
           <img src="https://files.sio.no/brandguide/SiO_logo_rgb_2000.jpg" alt="SiO Logo">
         </div>
       </div>
       <!-- Add mx-4 for spacing -->
       <div class="col col-middle mx-4">
-        <div class="search-bar">
+        <div role="search" class="search-bar">
           <input class="form-control" type="search" placeholder="What are you looking for?">
         </div>
       </div>
@@ -282,13 +287,16 @@ body {
     </div>
   </div>
   <hr>
+</nav>
 </header>
 
-
-
-
+<div id = "main-content" role="main"> the page's main content here </div>
+<!-- Bact to top button -->
+<div id = "skip-to-main">
+  <button><a href = "#main-content">Back to top</a></button>
+</div>
 <!-- Footer -->
-<footer class="footer-custom">
+<footer role="contentinfo" class="footer-custom">
     <div class="container">
         <!-- Logo Row -->
         <div class="row footer-logo">
@@ -343,6 +351,7 @@ body {
       <!-- Copyright -->
       <div class="text-center mt-4">
         <p>Studentsamskipnaden SiO © 2023</p>
+        <a href="event calendar page.html">link to event calendar page</a>
       </div>
     </div>
   </footer>
