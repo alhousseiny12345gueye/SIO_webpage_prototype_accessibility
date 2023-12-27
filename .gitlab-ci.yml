@@ -10,6 +10,12 @@ image_build:
     - docker build -t fastapi:$CI_PIPELINE_ID .
 
 
+code_test:
+  stage: test
+  script:
+    - cat index.html
+
+
 
 container_deploy1:
   stage: deploy
