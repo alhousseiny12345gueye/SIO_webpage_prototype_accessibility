@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SiO Event Calender</title>
+<title>SiO Find housing</title>
 <!-- Include Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
   <!-- Include Bootstrap Icons for social media icons -->
@@ -20,7 +20,6 @@
   top: 0;            /* Align to the top */
   width: 100%;       /* Full width */
   z-index: 1000;     /* Ensures it stays on top of other content */
-  background-color: white;
 }
 
 /* Style the search bar */
@@ -143,201 +142,60 @@ body {
 }
 
 /* --------------- */
-/*SECTION RECOMMENDED SIO EVENTS */
-/* ----------------- */
-.global-section-for-recommanded-events {
-  margin-bottom: 10vh;
-}
-.section-container {
-    text-align: center;
-    margin-top: 50px; /* Adjust as needed for your layout */
-
-  }
-  .section-title {
-    font-size: 48px; /* Adjust as needed for your layout */
-    font-weight: bold;
-    margin-bottom: 20px; /* Adjust as needed for your layout */
-  }
-  .section-subtitle {
-    font-size: 24px; /* Adjust as needed for your layout */
-    margin-bottom: 10px; /* Adjust as needed for your layout */
-  }
-  .section-additional-text {
-    font-size: 16px; /* Adjust as needed for your layout */
-  }
-  .section-recommends {
-    font-size: 20px; /* Adjust as needed for your layout */
-    font-weight: bold;
-    margin-top: 20px; /* Adjust as needed for your layout */
-  }
-
-.event-image {
-    max-width: 100%;
-    height: auto;
-  }
-  .card-title {
-    color: #000; /* Adjust the color to match your design */
-    font-size: 1.25rem; /* Adjust the size to match your design */
-  }
-  .card-text {
-    color: #555; /* Adjust the color to match your design */
-    font-size: 1rem; /* Adjust the size to match your design */
-  }
-  .event-icon {
-    padding-right: 5px; /* Space between icon and text */
-  }
-  .event-details a {
-    color: #000; /* Adjust the link color to match your design */
-    text-decoration: none; /* No underline */
-  }
-  .event-details a:hover {
-    text-decoration: underline; /* Underline on hover */
-  }
-/* --------------- */
-/*END SECTION RECOMMENDED SIO EVENTS */
+/*  STYLING of SECTION 1 */
 /* ----------------- */
 
-/* --------------- */
-/* SECTION FOR OTHER EVENTS */
-/* ----------------- */
-
-/* ----------------- SEARCH BAR AND FILTER BUTTON */
-.search-container {
-  /* Center the container */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px; /* Adjust as needed */
-  margin-bottom: 20px; /* Adjust as needed */
-}
-
-.search-input {
-  width: 50%; /* Adjust width as needed */
-  margin-bottom: 10px; /* Space between search input and filter button */
-  border: 1px solid #ccc; /* Light grey border */
-  border-radius: 20px; /* Rounded corners */
-  padding: 10px 20px; /* Spacing inside the input */
-}
-
-.filter-button {
-  border: none;
-  background-color: #fff; /* Change if you have a different button color */
-  color: #6c757d; /* Bootstrap's default secondary button text color */
-  border-radius: 20px; /* Rounded corners */
-  padding: 5px 10px; /* Padding to match input */
-  cursor: pointer; /* Hand cursor on hover */
-  box-shadow: 0 0 0 1px #6c757d; /* Simulate border */
-  width: fit-content; /* Adjust the width of button to fit its content */
-}
-
-.filter-button .filter-icon {
-  display: inline-block;
-  margin-left: 5px; /* Spacing between text and icon */
-}
-
-/* Add any specific states like hover or focus if needed */
-.search-input:focus,
-.filter-button:focus {
-  outline: none;
-/*  border-color: #6c757d; */
-  box-shadow: 0 0 0 2px rgba(108, 117, 125, 0.25);
-}
-
-/* ----------------- CSS FOR EVENT-CARDS */
-.events-section {
-/*  background: #f8f9fa; */
-  padding: 20px;
-}
-
-.events-section-title {
-  font-size: 24px;
-  color: #212529; */
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.row {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-
-.event-card {
-  background: #ffffff;
-  border: 1px solid #dee2e6;
-  border-radius: 15px; /* Rounded borders */
-  overflow: hidden;
-  margin: 15px; /* Space between cards */
-}
-
-.event-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-top-left-radius: 15px; /* Rounded top corners */
-  border-top-right-radius: 15px; /* Rounded top corners */
-}
-
-.event-title {
-  font-size: 18px; /* Slightly smaller to fit in the new card size */
-  color: #212529;
-  padding: 0.5rem;
-  text-align: center;
-}
-
-.event-details {
-  padding: 0.5rem;
-  text-align: center;
-}
-
-.event-date,
-.event-location {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0.5rem;
-}
-
-.event-date i,
-.event-location i {
-  margin-right: 0.5rem;
-}
-
-/* LOAD MORE BUTTON AT THE END OF THE EVENT CARDS */
-.btn-outline-secondary {
-  border-radius: 20px; /* Example of a custom border-radius if you want it different from Bootstrap's default */
-}
-
-/* Responsive grid adjustments */
-@media (max-width: 767px) {
-  .event-card {
-    margin: 10px; /* Less margin on smaller screens */
+  .unique-breadcrumb {
+    background-color: transparent; /* Adjust if needed */
+    padding-top: 20px;
   }
-}
-
-@media (min-width: 768px) {
-  .col-md-3 {
-    width: 25%; /* Adjust width for 4 cards in a row */
-    padding: 0 15px; /* Bootstrap gutter padding */
+  .unique-selection {
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem;
+    background-color: #FFFFFF; /* Style for the main container */
+    border-radius: .5rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15); /* Adjust if needed */
   }
-  .event-card {
-    margin: 15px 7.5px; /* Half the gutter padding as margin */
+  
+  .unique-title {
+    color: #503291; /* Adjust this color based on your screenshot */
+    margin-bottom: 1rem;
   }
-}
-
-@media (min-width: 992px) {
-  .col-lg-3 {
-    width: 25%; /* Adjust width for 4 cards in a row */
+  
+  .unique-radio-group {
+    justify-content: center;
+    margin-bottom: 1rem;
   }
-}
-
+  
+  /* ... other styles ... */
+  
+  .unique-filter-section {
+    background-color: #EDE7F6; /* Style for filter section */
+    padding: 1rem;
+    border-radius: .5rem;
+    margin-top: 1rem;
+  }
+  
+  .unique-dropdown {
+    margin-bottom: 1rem;
+  }
+  
+  .unique-dropdown .form-select {
+    border-color: #6f42c1; /* Adjust this color based on your screenshot */
+  }
 
 
 
 
 
 /* --------------- */
-/*END SECTION FOR OTHER EVENTS */
+/* END STYLING of SECTION 1 */
 /* ----------------- */
+
+
+
+
 
 /* --------------- */
 /*FOOTER STYLING */
@@ -429,17 +287,22 @@ body {
 <body>
 
 <header class="site-header">
+  <!-- Skip to main content button -->
+  <div id = "skip-to-main">
+    <button className="btn btn-default"><a href = "#main-content">Skip to main content</a></button>
+</div>
+  <nav>
   <div class="container-fluid">
     <div class="row align-items-center">
       <div class="col">
-        <div class="logo">
+        <div role="banner" class="logo">
           <!-- Replace with your actual logo image -->
           <img src="https://files.sio.no/brandguide/SiO_logo_rgb_2000.jpg" alt="SiO Logo">
         </div>
       </div>
       <!-- Add mx-4 for spacing -->
       <div class="col col-middle mx-4">
-        <div class="search-bar">
+        <div role="search" class="search-bar">
           <input class="form-control" type="search" placeholder="What are you looking for?">
         </div>
       </div>
@@ -479,177 +342,71 @@ body {
     </div>
   </div>
   <hr>
+</nav>
 </header>
 
+  <!-- ---------- -->
+  <!-- SECTION 1 -->
+  <!-- ---------- -->
 
-
-<!-- SIO recommended events -->
-<section class="global-section-for-recommanded-events">
-  <div class="container">
-    <div class="section-container">
-      <div class="section-title">Event calendar</div>
-      <div class="section-subtitle">Here you will find an overview of events and activities for students in Oslo.</div>
-      <div class="section-recommends">SiO recommends</div>
-      <div class="section-additional-text">2 events</div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <!-- Event 1 -->
-      <div class="col-md-6">
-        <div class="card">
-          <img src="https://cdn.sanity.io/images/7u9ahcl2/production/ca9063c8edc9fcf328add3ccd53992ceb9d26ef1-1451x767.png?w=2048" class="card-img-top event-image" alt="old woman watching Samurai armor in a glass">
-          <div class="card-body">
-            <h5 class="card-title">Gratis inngang - Siste sjanse til å se Samurai!</h5>
-            <div class="event-details">
-              <p class="card-text"><i class="bi bi-clock event-icon"></i>Saturday, 30 December 2023 at 11:00</p>
-              <p class="card-text"><i class="bi bi-geo-alt-fill event-icon"></i>Historisk museum i samarbeid med SiO</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Event 2 -->
-      <div class="col-md-6">
-        <div class="card">
-          <img src="https://cdn.sanity.io/images/7u9ahcl2/production/e74ece8ab69686893e8d7c9cf7a6ec49f2e01e27-1200x628.jpg?w=2048" class="card-img-top event-image" alt="SIO Gjenbruksmarked på Kringsjå ">
-          <div class="card-body">
-            <h5 class="card-title">Gjenbruksmarked på Kringsjå♻️</h5>
-            <div class="event-details">
-              <p class="card-text"><i class="bi bi-clock event-icon"></i>Saturday, 30 December 2023 at 11:00</p>
-              <p class="card-text"><i class="bi bi-geo-alt-fill event-icon"></i> SiO</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-  </div>  
-</section>
-
-
-<!-- Section for other events -->
-<section class="events-section">
-  <div class="container">
-    <hr>
-    <!-- FOR THE SEARCH BAR AND FILTER BUTTON  -->
-    <div class="search-container d-flex flex-column align-items-center">
-      <input class="form-control search-input" type="search" placeholder="What are you looking for?" aria-label="Search">
-      <button class="btn filter-button" type="button">Filter <span class="filter-icon">⚙️</span></button>
-    </div>
-
-    <h2 class="events-section-title">All events</h2>
-    <!-- FOR THE REST OF THE EVENT CARDS  -->
-  <div class="row">
-    <!-- Event Card 1 -->
-    <div class="col-sm-12 col-md-6 col-lg-4">
-      <div class="event-card">
-        <img src="https://cdn.sanity.io/images/7u9ahcl2/production/245b80d1eacbf47ae29530413d6b7c7d7d7ce7b4-1920x1080.jpg?w=2048" alt="Gjenbruksmarked" class="event-image">
-        <h3 class="event-title">Gjenbruksmarked på Kringsjå ♻️</h3>
-        <div class="event-details">
-          <p class="event-date"><i class="bi bi-calendar-event"></i> Tuesday, 26 December 2023 at 14:00</p>
-          <p class="event-location"><i class="bi bi-geo-alt"></i> SiO</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Event Card 2 -->
-    <div class="col-sm-12 col-md-6 col-lg-4">
-      <div class="event-card">
-        <img src="https://cdn.sanity.io/images/7u9ahcl2/production/21a3b78fc876dd5ecf11317b4bc890b43449ac35-5687x3198.jpg?w=2048" alt="OsloMet gaming association logo" class="event-image">
-        <h3 class="event-title">Countdown</h3>
-        <div class="event-details">
-          <p class="event-date"><i class="bi bi-clock-fill"></i> Thursday, 28 December 2023 at 17:00</p>
-          <p class="event-location"><i class="bi bi-building"></i> OsloMet Gaming</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Event Card 3 -->
-    <div class="col-sm-12 col-md-6 col-lg-4">
-      <div class="event-card">
-        <img src="https://cdn.sanity.io/images/7u9ahcl2/production/ca9063c8edc9fcf328add3ccd53992ceb9d26ef1-1451x767.png?w=2048" alt="Samurai Exhibit" class="event-image">
-        <h3 class="event-title">Gratis inngang - Siste sjanse til å se Samurai!</h3>
-        <div class="event-details">
-          <p class="event-date"><i class="bi bi-calendar-event"></i> Saturday, 30 December 2023 at 11:00</p>
-          <p class="event-location"><i class="bi bi-geo-alt"></i> Historisk museum i samarbeid med SiO</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Event Card 4 -->
-    <div class="col-sm-12 col-md-6 col-lg-4">
-      <div class="event-card">
-        <img src="https://cdn.sanity.io/images/7u9ahcl2/production/245b80d1eacbf47ae29530413d6b7c7d7d7ce7b4-1920x1080.jpg?w=2048" alt="Clothes exchange graphic" class="event-image">
-        <h3 class="event-title">Gjenbruksmarked på Kringsjå ♻️</h3>
-        <div class="event-details">
-          <p class="event-date"><i class="bi bi-calendar-event"></i> Saturday, 30 December 2023 at 12:00</p>
-          <p class="event-location"><i class="bi bi-geo-alt"></i> SiO</p>
-        </div>
-      </div>
-    </div>
-    
-     <!-- Event Card 5 -->
-    <div class="col-sm-12 col-md-6 col-lg-4">
-      <div class="event-card">
-        <img src="https://cdn.sanity.io/images/7u9ahcl2/production/aa0c4a4987e3282606a41a32b707cedb1d12030f-1743x969.png?w=2048" alt="image showing 50% reduction per play on monday, trackman golfsimulatro, flyby dart, shuffle tech" class="event-image">
-        <h3 class="event-title">Spillkveld på PINPIN 🌟</h3>
-        <div class="event-details">
-          <p class="event-date"><i class="bi bi-calendar-event"></i> Monday, 30 December 2023 at 11:00</p>
-          <p class="event-location"><i class="bi bi-geo-alt"></i> PINPIN</p>
-        </div>
-      </div>
-    </div>
-
-
-      <!-- Event Card 6 -->
-    <div class="col-sm-12 col-md-6 col-lg-4">
-      <div class="event-card">
-        <img src="https://cdn.sanity.io/images/7u9ahcl2/production/e81e33aff70b7ee2f0624b8ecbb16df847e42e55-2000x1089.png?w=2048" alt="two girl painting on a canvas in a room" class="event-image">
-        <h3 class="event-title">Paint 'n Sip 🎨</h3>
-        <div class="event-details">
-          <p class="event-date"><i class="bi bi-calendar-event"></i> Saturday, 30 December 2023 at 11:00</p>
-          <p class="event-location"><i class="bi bi-geo-alt"></i> Oslo</p>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- Event Card 7 -->
-    <div class="col-sm-12 col-md-6 col-lg-4">
-      <div class="event-card">
-        <img src="https://cdn.sanity.io/images/7u9ahcl2/production/245b80d1eacbf47ae29530413d6b7c7d7d7ce7b4-1920x1080.jpg?w=2048" alt="Gjenbruksmarked" class="event-image">
-        <h3 class="event-title">Gjenbruksmarked på Kringsjå ♻️</h3>
-        <div class="event-details">
-          <p class="event-date"><i class="bi bi-calendar-event"></i> Tuesday, 26 December 2023 at 14:00</p>
-          <p class="event-location"><i class="bi bi-geo-alt"></i> SiO</p>
-        </div>
-      </div>
-    </div>
-    
-     <!-- Event Card 8 -->
-     <div class="col-sm-12 col-md-6 col-lg-4">
-      <div class="event-card">
-        <img src="https://cdn.sanity.io/images/7u9ahcl2/production/aa0c4a4987e3282606a41a32b707cedb1d12030f-1743x969.png?w=2048" alt="image showing 50% reduction per play on monday, trackman golfsimulatro, flyby dart, shuffle tech" class="event-image">
-        <h3 class="event-title">Spillkveld på PINPIN 🌟</h3>
-        <div class="event-details">
-          <p class="event-date"><i class="bi bi-calendar-event"></i> Monday, 30 December 2023 at 11:00</p>
-          <p class="event-location"><i class="bi bi-geo-alt"></i> PINPIN</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="text-left mb-3"> <!-- Bootstrap class for text alignment and margin-bottom -->
-    <button class="btn btn-outline-secondary">Load more</button> <!-- Bootstrap button classes -->
+  <div class="unique-breadcrumb">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb unique-breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Find housing</li>
+      </ol>
+    </nav>
   </div>
   
+  <div class="unique-selection-container text-center">
+    <!-- Title -->
+    <h2 class="unique-title">You see housing units for: Family</h2>
+  
+    <!-- Profile Selection -->
+    <div class="btn-group unique-radio-group" role="group">
+      <input type="radio" class="btn-check unique-radio-button" name="btnradio" id="uniqueOnePerson" autocomplete="off">
+      <label class="btn btn-outline-primary" for="uniqueOnePerson">One person</label>
+  
+      <input type="radio" class="btn-check unique-radio-button" name="btnradio" id="uniqueCouple" autocomplete="off">
+      <label class="btn btn-outline-primary" for="uniqueCouple">Couple</label>
+  
+      <input type="radio" class="btn-check unique-radio-button" name="btnradio" id="uniqueFamily" autocomplete="off" checked>
+      <label class="btn btn-primary" for="uniqueFamily">Family</label>
+    </div>
+  
+    <!-- Filter Section -->
+    <div class="unique-filter-section">
+      <div class="row">
+        <div class="col-md-6 unique-dropdown">
+          <select class="form-select">
+            <option selected>Choose study place</option>
+            <!-- Add more options here -->
+          </select>
+        </div>
+  
+        <div class="col-md-6 unique-dropdown">
+          <select class="form-select">
+            <option selected>Most relevant</option>
+            <!-- Add more options here -->
+          </select>
+        </div>
+      </div>
+    </div>
 
+
+  <!-- ---------- -->
+  <!-- END SECTION 1 -->
+  <!-- ---------- -->
+
+
+<div id = "main-content" role="main"> the page's main content here </div>
+<!-- Bact to top button -->
+<div id = "skip-to-main">
+  <button><a href = "#main-content">Back to top</a></button>
 </div>
-</section>
-
 <!-- Footer -->
-<footer class="footer-custom">
+<footer role="contentinfo" class="footer-custom">
     <div class="container">
         <!-- Logo Row -->
         <div class="row footer-logo">
@@ -704,7 +461,7 @@ body {
       <!-- Copyright -->
       <div class="text-center mt-4">
         <p>Studentsamskipnaden SiO © 2023</p>
-        <a href="index.html"></a>
+        <a href="event_calendar_page.html">link to event calendar page</a>
       </div>
     </div>
   </footer>

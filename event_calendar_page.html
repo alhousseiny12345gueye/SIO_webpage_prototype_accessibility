@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SiO Event Calender</title>
+<!-- Include Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+  <!-- Include Bootstrap Icons for social media icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css">
+<style>
+/* --------------- */
+/* HEADER STYLING */
+/* ----------------- */
+
+
+.site-header {
+  padding: 1% 2%; /* Add padding to the header */
+  position: fixed;   /* Fixed position */
+  top: 0;            /* Align to the top */
+  width: 100%;       /* Full width */
+  z-index: 1000;     /* Ensures it stays on top of other content */
+  background-color: white;
+}
+
+/* Style the search bar */
+.search-bar input[type="search"] {
+  height: 5vh; 
+  width: 15vw;
+}
+
+/* Style the user-info area */
+.user-info {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  color: #000;
+}
+
+/* Style the buttons to match each other */
+.user-info button, .menu-toggle button {
+  height: 5vh; /* Match the height of the search bar */
+  margin-left: 10px;
+  background: none;
+  border: 1px solid #000; /* Add border to match the "Norsk" button */
+  cursor: pointer;
+  color: #000; /* Set the text color */
+  font-size: inherit;
+  padding: 0 10px; /* Add some horizontal padding */
+}
+
+.user-info button:hover {
+  color: #343a40;
+}
+
+.user-info button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  color: #6c757d;
+  font-size: inherit;
+}
+
+.user-info button:hover {
+  color: #343a40;
+}
+
+.icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 0.5rem;
+  fill: currentColor;
+}
+
+.globe-icon {
+  /* Additional styles specific to the globe icon */
+}
+
+.user-icon {
+  /* Additional styles specific to the user icon */
+}
+
+.menu-icon span {
+  display: block;
+  width: 1.5rem;
+  height: 0.2rem;
+  background-color: #333;
+  margin: 0.2rem 0;
+}
+
+
+/* Keep the aspect ratio of the logo */
+.logo img {
+  height: 5vh;
+  width: auto;
+}
+
+/* Adjust the language and login icons */
+.language-icon,
+.user-icon {
+  margin-right: 10px;
+}
+
+/* Style for the menu icon */
+.menu-icon span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 5px 0;
+}
+
+/* Adjust the flex properties of the columns to position items */
+.col {
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+}
+
+/* Specifically adjust the middle column to push the search bar to the right */
+.col-middle {
+  justify-content: flex-end;
+}
+
+/* Additional Bootstrap classes for spacing */
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+/* --------------- */
+/* END HEADER STYLING */
+/* ----------------- */
+
+body {
+  padding-top: 85px;  /* Adjust this to the height of your header */
+}
+
+/* --------------- */
+/*SECTION RECOMMENDED SIO EVENTS */
+/* ----------------- */
+.global-section-for-recommanded-events {
+  margin-bottom: 10vh;
+}
+.section-container {
+    text-align: center;
+    margin-top: 50px; /* Adjust as needed for your layout */
+
+  }
+  .section-title {
+    font-size: 48px; /* Adjust as needed for your layout */
+    font-weight: bold;
+    margin-bottom: 20px; /* Adjust as needed for your layout */
+  }
+  .section-subtitle {
+    font-size: 24px; /* Adjust as needed for your layout */
+    margin-bottom: 10px; /* Adjust as needed for your layout */
+  }
+  .section-additional-text {
+    font-size: 16px; /* Adjust as needed for your layout */
+  }
+  .section-recommends {
+    font-size: 20px; /* Adjust as needed for your layout */
+    font-weight: bold;
+    margin-top: 20px; /* Adjust as needed for your layout */
+  }
+
+.event-image {
+    max-width: 100%;
+    height: auto;
+  }
+  .card-title {
+    color: #000; /* Adjust the color to match your design */
+    font-size: 1.25rem; /* Adjust the size to match your design */
+  }
+  .card-text {
+    color: #555; /* Adjust the color to match your design */
+    font-size: 1rem; /* Adjust the size to match your design */
+  }
+  .event-icon {
+    padding-right: 5px; /* Space between icon and text */
+  }
+  .event-details a {
+    color: #000; /* Adjust the link color to match your design */
+    text-decoration: none; /* No underline */
+  }
+  .event-details a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+/* --------------- */
+/*END SECTION RECOMMENDED SIO EVENTS */
+/* ----------------- */
+
+/* --------------- */
+/*FILTER BUTTON SUB MENU STYLING */
+/* ----------------- */
+
+
+
+
+/* Main container adjustments */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background: #fff;
+}
+
+/* Button styling for thinner and more rounded appearance */
+.filterButton, #seeEventsBtn, #clearFiltersBtn {
+  padding: 5px 15px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+/* Apply specific color to the 'See events' button */
+#seeEventsBtn {
+  background-color: #230455; /* New color */
+  color: white;
+}
+
+/* Adjustments for checkbox size and label alignment with space */
+.custom-control-input {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.custom-control-label {
+  margin-top: 2px;
+  cursor: pointer;
+  padding-left: 5px; /* Space between checkbox and text */
+}
+
+/* Fieldset and legend for category selection */
+fieldset {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+/* Layout adjustments for category checkboxes */
+.filter-category {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Individual category label and checkbox */
+.filter-category label {
+  flex-basis: calc(33% - 10px);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Time filter options divided into two rows */
+.filter-time {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Adjust as necessary */
+  gap: 10px; /* Space between the options */
+}
+
+/* Time filter individual option styling */
+.filter-time .custom-control {
+  flex-basis: 45%; /* Adjust this value to fit two options per row */
+  margin-bottom: 5px; /* Space below each row */
+}
+
+/* Responsive adjustments if necessary */
+@media (max-width: 768px) {
+  .filter-category label {
+    flex-basis: calc(50% - 10px); /* Adjust for smaller screens */
+  }
+  .filter-time .custom-control {
+    flex-basis: 100%; /* Full width on smaller screens */
+  }
+}
+
+
+
+
+
+/* ----------------- */
+/*END FILTER BUTTON SUB MENU STYLING */
+/* ----------------- */
+
+
+
+/* --------------- */
+/* SECTION FOR OTHER EVENTS */
+/* ----------------- */
+
+/* ----------------- SEARCH BAR AND FILTER BUTTON */
+.search-container {
+  /* Center the container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px; /* Adjust as needed */
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+.search-input {
+  width: 50%; /* Adjust width as needed */
+  margin-bottom: 10px; /* Space between search input and filter button */
+  border: 1px solid #ccc; /* Light grey border */
+  border-radius: 20px; /* Rounded corners */
+  padding: 10px 20px; /* Spacing inside the input */
+}
+
+.filterButton {
+  border: none;
+  background-color: #fff; /* Change if you have a different button color */
+  color: #6c757d; /* Bootstrap's default secondary button text color */
+  border-radius: 20px; /* Rounded corners */
+  padding: 5px 10px; /* Padding to match input */
+  cursor: pointer; /* Hand cursor on hover */
+  box-shadow: 0 0 0 1px #6c757d; /* Simulate border */
+  width: fit-content; /* Adjust the width of button to fit its content */
+}
+
+.filterButton .filter-icon {
+  display: inline-block;
+  margin-left: 5px; /* Spacing between text and icon */
+}
+
+/* Add any specific states like hover or focus if needed */
+.search-input:focus,
+.filterButton:focus {
+  outline: none;
+/*  border-color: #6c757d; */
+  box-shadow: 0 0 0 2px rgba(108, 117, 125, 0.25);
+}
+
+/* ----------------- CSS FOR EVENT-CARDS */
+.events-section {
+/*  background: #f8f9fa; */
+  padding: 20px;
+}
+
+.events-section-title {
+  font-size: 24px;
+  color: #212529; */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.event-card {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 15px; /* Rounded borders */
+  overflow: hidden;
+  margin: 15px; /* Space between cards */
+}
+
+.event-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-top-left-radius: 15px; /* Rounded top corners */
+  border-top-right-radius: 15px; /* Rounded top corners */
+}
+
+.event-title {
+  font-size: 18px; /* Slightly smaller to fit in the new card size */
+  color: #212529;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.event-details {
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.event-date,
+.event-location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.event-date i,
+.event-location i {
+  margin-right: 0.5rem;
+}
+
+/* LOAD MORE BUTTON AT THE END OF THE EVENT CARDS */
+.btn-outline-secondary {
+  border-radius: 20px; /* Example of a custom border-radius if you want it different from Bootstrap's default */
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 767px) {
+  .event-card {
+    margin: 10px; /* Less margin on smaller screens */
+  }
+}
+
+@media (min-width: 768px) {
+  .col-md-3 {
+    width: 25%; /* Adjust width for 4 cards in a row */
+    padding: 0 15px; /* Bootstrap gutter padding */
+  }
+  .event-card {
+    margin: 15px 7.5px; /* Half the gutter padding as margin */
+  }
+}
+
+@media (min-width: 992px) {
+  .col-lg-3 {
+    width: 25%; /* Adjust width for 4 cards in a row */
+  }
+}
+
+
+
+
+
+
+/* --------------- */
+/*END SECTION FOR OTHER EVENTS */
+/* ----------------- */
+
+/* --------------- */
+/*FOOTER STYLING */
+/* ----------------- */
+.footer-logo {
+  text-align: left; 
+  padding: 1rem 0; 
+}
+
+.footer-logo img {
+  max-height: 100px; 
+  width: auto; 
+  margin-bottom: 2rem;  
+}
+
+
+
+/* Clear float for the next rows */
+.clearfix {
+  clear: both;
+ }
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .footer-logo {
+    padding: 0.5rem 0; /* Less padding on small screens */
+  }
+  
+  .footer-logo img {
+    max-height: 50px; /* Smaller logo on small screens */
+    margin-bottom: 1rem; /* Less space between the logo and the footer content */
+  }
+}
+.footer-custom {
+      background-color: #4b2c6b; /* This color should match the screenshot */
+      color: #CCC; /* Adjusted lighter grey color for text */
+      padding: 2rem 0;
+    }
+
+    .footer-custom h5 {
+      color: white;
+      margin-bottom: 1rem;
+      font-size: 1.1rem; /* Slightly increased font size */
+    }
+
+    .footer-custom ul,
+    .footer-custom p,
+    .footer-custom a {
+      color: #CCC; /* Light grey text color, adjust if necessary */
+      font-size: 0.9rem; /* Slightly increased font size */
+    }
+
+    .footer-custom a:hover {
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer-custom .bi {
+      font-size: 24px; /* Adjust size as needed */
+      margin-right: 10px;
+    }
+
+    .footer-social {
+      padding-bottom: 1rem;
+    }
+
+    .footer-custom .container {
+      max-width: 1140px; /* Adjust the max-width as needed */
+    }
+
+    .app-download {
+      
+      padding-left: 20px; /* Space after the border */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .footer-custom .bi {
+        margin-bottom: 10px;
+      }
+
+      .footer-social, .app-download {
+        text-align: center;
+        border-left: none;
+        padding-left: 0;
+      }
+    }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col">
+        <div class="logo">
+          <!-- Replace with your actual logo image -->
+          <img src="https://files.sio.no/brandguide/SiO_logo_rgb_2000.jpg" alt="SiO Logo">
+        </div>
+      </div>
+      <!-- Add mx-4 for spacing -->
+      <div class="col col-middle mx-4">
+        <div class="search-bar">
+          <input class="form-control" type="search" placeholder="What are you looking for?">
+        </div>
+      </div>
+      <!-- Add mx-2 for tighter spacing -->
+      <div class="col mx-2">
+        <div class="user-info">
+            <!-- Button with globe icon for language selection -->
+            <button aria-label="Change language to Norsk">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16">
+                <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472M3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
+                </svg>
+              Norsk
+            </button>
+          
+            <!-- Button with user icon for login -->
+            <button aria-label="Log in">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" title="my-page" aria-label="my-page" focusable="false" class="sc-f50bd5e0-0 evcasr">
+                    <g fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2" class="my-page_svg__nc-icon-wrapper"><path stroke-linecap="square" d="M12 16h0a4 4 0 0 1-4-4v-2a4 4 0 0 1 4-4h0a4 4 0 0 1 4 4v2a4 4 0 0 1-4 4z" data-color="color-2"></path><path d="M18.102 21.154C17.002 19.86 15.332 19 13.5 19h-3a5.99 5.99 0 0 0-4.6 2.147" data-cap="butt" data-color="color-2"></path><circle cx="12" cy="12" r="11" stroke-linecap="square"></circle>
+                    </g>
+                </svg>
+              Log in
+            </button>
+          
+            <!-- Button with menu icon for navigation -->
+            <button aria-label="Open menu">
+              <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              Menu
+            </button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+</header>
+
+
+
+<!-- SIO recommended events -->
+<section class="global-section-for-recommanded-events">
+  <div class="container">
+    <div class="section-container">
+      <div class="section-title">Event calendar</div>
+      <div class="section-subtitle">Here you will find an overview of events and activities for students in Oslo.</div>
+      <div class="section-recommends">SiO recommends</div>
+      <div class="section-additional-text">2 events</div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <!-- Event 1 -->
+      <div class="col-md-6">
+        <div class="card">
+          <img src="https://cdn.sanity.io/images/7u9ahcl2/production/ca9063c8edc9fcf328add3ccd53992ceb9d26ef1-1451x767.png?w=2048" class="card-img-top event-image" alt="old woman watching Samurai armor in a glass">
+          <div class="card-body">
+            <h5 class="card-title">Gratis inngang - Siste sjanse til å se Samurai!</h5>
+            <div class="event-details">
+              <p class="card-text"><i class="bi bi-clock event-icon"></i>Saturday, 30 December 2023 at 11:00</p>
+              <p class="card-text"><i class="bi bi-geo-alt-fill event-icon"></i>Historisk museum i samarbeid med SiO</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Event 2 -->
+      <div class="col-md-6">
+        <div class="card">
+          <img src="https://cdn.sanity.io/images/7u9ahcl2/production/e74ece8ab69686893e8d7c9cf7a6ec49f2e01e27-1200x628.jpg?w=2048" class="card-img-top event-image" alt="SIO Gjenbruksmarked på Kringsjå ">
+          <div class="card-body">
+            <h5 class="card-title">Gjenbruksmarked på Kringsjå♻️</h5>
+            <div class="event-details">
+              <p class="card-text"><i class="bi bi-clock event-icon"></i>Saturday, 30 December 2023 at 11:00</p>
+              <p class="card-text"><i class="bi bi-geo-alt-fill event-icon"></i> SiO</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>  
+</section>
+
+
+<!-- Section for other events -->
+<section class="events-section">
+  <div class="container">
+    <hr>
+    <!-- FOR THE SEARCH BAR AND FILTER BUTTON  -->
+    <div class="search-container d-flex flex-column align-items-center">
+      <input class="form-control search-input" type="search" placeholder="What are you looking for?" aria-label="Search">
+      <button class="btn filterButton" type="button" id="filterButton">Filter <span class="filter-icon">⚙️</span></button>
+      <!-- Dropdown menu for filter button -->
+          <div class="dropdown-menu p-3" aria-labelledby="filter-button" id="filterMenu" style="display: none;">
+            <!-- Checkbox for events open to everyone -->
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="openToEveryone" name="openToEveryone">
+              <label class="form-check-label" for="openToEveryone">Only show events that are open to everyone</label>
+            </div>
+          
+          <hr>
+          <h3>Choose filter</h3>
+
+          <!-- Time filter options -->
+          <fieldset class="mb-3">
+            <legend>Choose Time</legend>
+            <!-- Time filter options -->
+          <div class="filter-time mb-3">
+            <div class="custom-control custom-radio">
+              <input type="radio" id="timeAll" name="filterTime" class="custom-control-input" checked>
+              <label class="custom-control-label" for="timeAll">All</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="timeToday" name="filterTime" class="custom-control-input">
+              <label class="custom-control-label" for="timeToday">Today</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="timeTomorrow" name="filterTime" class="custom-control-input">
+              <label class="custom-control-label" for="timeTomorrow">Tomorrow</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="timeThisWeekend" name="filterTime" class="custom-control-input">
+              <label class="custom-control-label" for="timeThisWeekend">This weekend</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="timeNext7Days" name="filterTime" class="custom-control-input">
+              <label class="custom-control-label" for="timeNext7Days">Next 7 days</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="timeNextMonth" name="filterTime" class="custom-control-input">
+              <label class="custom-control-label" for="timeNextMonth">Next month</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="timeNext6Months" name="filterTime" class="custom-control-input">
+              <label class="custom-control-label" for="timeNext6Months">Next 6 months</label>
+            </div>
+          </div>
+          <hr>
+          </fieldset>
+
+          <fieldset class="mb-3">
+            <legend>Choose category</legend>
+            <div class="filter-category custom-control custom-checkbox custom-control-lg">
+              <label><input type="checkbox" name="category" value="uteLiv"> UteLiv</label>
+              <label><input type="checkbox" name="category" value="informote"> Informøte</label>
+              <label><input type="checkbox" name="category" value="kurs"> Kurs</label>
+              <label><input type="checkbox" name="category" value="miljoOgGjenbruk"> Miljø og gjenbruk</label>
+              <label><input type="checkbox" name="category" value="quiz"> Quiz</label>
+              <label><input type="checkbox" name="category" value="foredrag"> Foredrag</label>
+              <label><input type="checkbox" name="category" value="museumOgUtstilling"> Museum og utstilling</label>
+              <label><input type="checkbox" name="category" value="politikk"> Politikk</label>
+              <label><input type="checkbox" name="category" value="konsert"> Konsert</label>
+              <label><input type="checkbox" name="category" value="markering"> Markering</label>
+              <label><input type="checkbox" name="category" value="sosialt"> Sosialt</label>
+              <label><input type="checkbox" name="category" value="games"> Games</label>
+              <label><input type="checkbox" name="category" value="idrettOgAktivitet"> Idrett og aktivitet</label>
+              <label><input type="checkbox" name="category" value="korOgOrkester"> Kor og orkester</label>
+              <label><input type="checkbox" name="category" value="kulturOgScene"> Kultur og scene</label>
+              <label><input type="checkbox" name="category" value="debatt"> Debatt</label>
+              <label><input type="checkbox" name="category" value="natur"> Natur</label>
+              <label><input type="checkbox" name="category" value="provetrening"> Prøvetrening</label>
+            </div>
+            <hr>
+          </fieldset>
+          
+               <!-- Action buttons -->
+      <div class="d-flex justify-content-between">
+        
+        <button id="seeEventsBtn" class="btn btn-primary">See events</button>
+        <button id="clearFiltersBtn" class="btn btn-outline-secondary">Remove all</button>
+        <hr>
+      </div>
+    </div>
+
+    <h2 class="events-section-title">All events</h2>
+    <!-- FOR THE REST OF THE EVENT CARDS  -->
+  <div class="row">
+    <!-- Event Card 1 -->
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="event-card">
+        <img src="https://cdn.sanity.io/images/7u9ahcl2/production/245b80d1eacbf47ae29530413d6b7c7d7d7ce7b4-1920x1080.jpg?w=2048" alt="Gjenbruksmarked" class="event-image">
+        <h3 class="event-title">Gjenbruksmarked på Kringsjå ♻️</h3>
+        <div class="event-details">
+          <p class="event-date"><i class="bi bi-calendar-event"></i> Tuesday, 26 December 2023 at 14:00</p>
+          <p class="event-location"><i class="bi bi-geo-alt"></i> SiO</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Event Card 2 -->
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="event-card">
+        <img src="https://cdn.sanity.io/images/7u9ahcl2/production/21a3b78fc876dd5ecf11317b4bc890b43449ac35-5687x3198.jpg?w=2048" alt="OsloMet gaming association logo" class="event-image">
+        <h3 class="event-title">Countdown</h3>
+        <div class="event-details">
+          <p class="event-date"><i class="bi bi-clock-fill"></i> Thursday, 28 December 2023 at 17:00</p>
+          <p class="event-location"><i class="bi bi-building"></i> OsloMet Gaming</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Event Card 3 -->
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="event-card">
+        <img src="https://cdn.sanity.io/images/7u9ahcl2/production/ca9063c8edc9fcf328add3ccd53992ceb9d26ef1-1451x767.png?w=2048" alt="Samurai Exhibit" class="event-image">
+        <h3 class="event-title">Gratis inngang - Siste sjanse til å se Samurai!</h3>
+        <div class="event-details">
+          <p class="event-date"><i class="bi bi-calendar-event"></i> Saturday, 30 December 2023 at 11:00</p>
+          <p class="event-location"><i class="bi bi-geo-alt"></i> Historisk museum i samarbeid med SiO</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Event Card 4 -->
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="event-card">
+        <img src="https://cdn.sanity.io/images/7u9ahcl2/production/245b80d1eacbf47ae29530413d6b7c7d7d7ce7b4-1920x1080.jpg?w=2048" alt="Clothes exchange graphic" class="event-image">
+        <h3 class="event-title">Gjenbruksmarked på Kringsjå ♻️</h3>
+        <div class="event-details">
+          <p class="event-date"><i class="bi bi-calendar-event"></i> Saturday, 30 December 2023 at 12:00</p>
+          <p class="event-location"><i class="bi bi-geo-alt"></i> SiO</p>
+        </div>
+      </div>
+    </div>
+    
+     <!-- Event Card 5 -->
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="event-card">
+        <img src="https://cdn.sanity.io/images/7u9ahcl2/production/aa0c4a4987e3282606a41a32b707cedb1d12030f-1743x969.png?w=2048" alt="image showing 50% reduction per play on monday, trackman golfsimulatro, flyby dart, shuffle tech" class="event-image">
+        <h3 class="event-title">Spillkveld på PINPIN 🌟</h3>
+        <div class="event-details">
+          <p class="event-date"><i class="bi bi-calendar-event"></i> Monday, 30 December 2023 at 11:00</p>
+          <p class="event-location"><i class="bi bi-geo-alt"></i> PINPIN</p>
+        </div>
+      </div>
+    </div>
+
+
+      <!-- Event Card 6 -->
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="event-card">
+        <img src="https://cdn.sanity.io/images/7u9ahcl2/production/e81e33aff70b7ee2f0624b8ecbb16df847e42e55-2000x1089.png?w=2048" alt="two girl painting on a canvas in a room" class="event-image">
+        <h3 class="event-title">Paint 'n Sip 🎨</h3>
+        <div class="event-details">
+          <p class="event-date"><i class="bi bi-calendar-event"></i> Saturday, 30 December 2023 at 11:00</p>
+          <p class="event-location"><i class="bi bi-geo-alt"></i> Oslo</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Event Card 7 -->
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="event-card">
+        <img src="https://cdn.sanity.io/images/7u9ahcl2/production/245b80d1eacbf47ae29530413d6b7c7d7d7ce7b4-1920x1080.jpg?w=2048" alt="Gjenbruksmarked" class="event-image">
+        <h3 class="event-title">Gjenbruksmarked på Kringsjå ♻️</h3>
+        <div class="event-details">
+          <p class="event-date"><i class="bi bi-calendar-event"></i> Tuesday, 26 December 2023 at 14:00</p>
+          <p class="event-location"><i class="bi bi-geo-alt"></i> SiO</p>
+        </div>
+      </div>
+    </div>
+    
+     <!-- Event Card 8 -->
+     <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="event-card">
+        <img src="https://cdn.sanity.io/images/7u9ahcl2/production/aa0c4a4987e3282606a41a32b707cedb1d12030f-1743x969.png?w=2048" alt="image showing 50% reduction per play on monday, trackman golfsimulatro, flyby dart, shuffle tech" class="event-image">
+        <h3 class="event-title">Spillkveld på PINPIN 🌟</h3>
+        <div class="event-details">
+          <p class="event-date"><i class="bi bi-calendar-event"></i> Monday, 30 December 2023 at 11:00</p>
+          <p class="event-location"><i class="bi bi-geo-alt"></i> PINPIN</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="text-left mb-3"> <!-- Bootstrap class for text alignment and margin-bottom -->
+    <button class="btn btn-outline-secondary">Load more</button> <!-- Bootstrap button classes -->
+  </div>
+  
+
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="footer-custom">
+    <div class="container">
+        <!-- Logo Row -->
+        <div class="row footer-logo">
+            <div class="col">
+              <img src="https://files.sio.no/brandguide/SiO_logo_rgb_transparent.png" alt="SiO Logo">
+            </div>
+          </div>
+       <!-- Content Rows -->
+    <div class="row text-center text-md-start mt-4">
+        <!-- About Section -->
+        <div class="col-md-3">
+          <h5>About Studentsamskipnaden SiO</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">About SiO</a></li>
+            <li><a href="#">Contact us</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+        </div>
+  
+        <!-- Help Section -->
+        <div class="col-md-3">
+          <h5>Do you need help?</h5>
+          <p>We are happy to answer your questions.</p>
+          <a href="#">Send us a message</a><br>
+          <a href="#">Or call us at 22 85 32 00</a>
+        </div>
+  
+        <!-- Follow Section -->
+        <div class="col-md-3 footer-social">
+          <h5>Follow us</h5>
+          <div>
+            <a href="#" class="bi bi-instagram"></a>
+            <a href="#" class="bi bi-facebook"></a>
+            <a href="#" class="bi bi-twitter"></a>
+            <a href="#" class="bi bi-youtube"></a>
+          </div>
+        </div>
+  
+        <!-- Download App Section -->
+        <div class="col-md-3 app-download">
+          <h5>Download the Mitt SiO app</h5>
+          <p>Get our services right in your pocket</p>
+          <a href="#" aria-label="Link to App store" class="logo">
+            <img src="https://banner2.cleanpng.com/20180719/yx/kisspng-app-store-apple-download-logo-app-store-5b500db7563a30.7098935315319730473532.jpg" alt="apple store logo">
+        </a>
+          <a href="#" aria-label="Link to App store" class="logo">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaAAAAB5CAMAAABIrgU4AAABrVBMVEUAAAD///9m/9T/xGYPDw/y8vLZ2dkuLi5TU1P19fUICAhf7tBj+NL4+PhmZma6urrKysrg4OA/Pz8ZPTRr/9/S0tJV1spX2svr6+uLi4te6s8oKCg1NTWEhIRSz8jc3Nx8fHyqqqpNwsVQyce28adZ4MzOPm3AwMCkpKRKu8TTP2bKPnScnJxycnKl6arDPX5HR0dGscGe5qsbGxuT4a2+PIVhYWFOTk5Dqr+J3K++9KbVQGPFPXu6O4y1OpMXFxfaQFyuOZ1+17ESLjDJ+aT/zWsZPklGkH4yZVklX3FBqs5u3cBoyrE/ob0wWEoOJCpouZuD5b4dMSdioIBajW9SfWCP1qREZUxMws08Vj+Jwo5my7uEs4J2nW5S0NBqhV646KFPX0GtzYoxOibd/64sHQry4oWsikiBaDbmvWJuWC5ZSSaL67vNqVc7Lxiiipnxk2HTKGfOJm+el6a2lU3HInrcQVjNMklkHSbAIoWDJz2TmbS5G5CeMFciChE9EyOxN3NdHT+vHJ98J2CnOKeOLoArDSSmFa2hOLJHGEaCoMdUHVqlHcJhIW9oCn1IJZdrAAAMhklEQVR4nO2ci5/Tth3ALUicSzjHcQ6DTXLEPh7JtQk9CL3jYHA8220co+zZja3rXu26sdHC6Nax7tGylbHH3zzpJ1mWZIckd3ncdb/vh4dj2TpFX0n+SbbPshAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQbL013vVutiuFASWVSik20DuTkaDZtC0lKP4xtYsCv/lp9R2CCUI4dOyUwZIzyrS/4rsHxJB0lbgWZYjd64nGdRr7HzSqsKnquPww604PQTZORF104nCNiE2+xiSwLcpXtWi//sOodui6gvlwLLsZKe3IDIIqZtuFFJLLvtYJcThXQcFTQJan7zrNGyo35Asq8k+6cttEMTwiDK+UcE92NgIwFCVlEkbdqCgCVBIxq+EUPgS+KSpHCsFNeTOEpEaaF5VJqjrEehdKGgCdPm4lDKuIJfEcrtKPPZPvEaK7CMKmgAtRQCQGeKGCCqSUnp0QAdEKoha61ooaCI4ZWNHSNyIIep2mKAGUTNwqRImqOCw01DQ7imwQYmyTjh9FpMBPj9gmKC6yIDTofECE0QjBx8FTQTRgzZsn+KAILe36x5Eo3ESoaBJ4KnXoIDs+hq0JQTViYOCJkFXzFkYMFyNG8XFShjYY3NdLoiFhyEK2j1bTtpjbLa5g3lQVWz2xTyIx90BaaOgCUDDgw5s1G0IDMYd4mi3EUqrZVCTCGJxBwqaALSCnXYntkXgFhKnyHD4+s1wQWytp+h2XE+YTgRZbRQ0GRpxERajI/hEBQEkKwhWsxktp6Rl4JZZBjW+eioF9YsoaFI01uqF4Ue9hNJac/hBCIIgyJeMN9786ryLgLyEr3397O1tVLRnqdy5c+fs9u3tb8y7IEg+d6mgO6vXt++9tTTvoiB53L1AoYauX7/31jfnXRgkCwi6cIEZur75rd1NNpEpcPcscGEFDD349q4zxIdBJ8uNswJmaHPz/OZ3dpxVI2LrnYQU/e7GBEv4f86NtxNDJzapoM3z5777vR1ltFYjCsHy8DN2QMFv2S1/hIG4tKzQq6tJPbon3D/9/Mbbq4Kz9zeZoPNU0ffHzqak6YF+1JtCaSts1bs8gqAFozTtBZkEvbz0knP3Fqmg1dX7QtC5Mz/42Xi5LJt6GO7w88alwu5rFHcgiKQ35u19JmhlZXWF/11ZvX+eCzp35swPxwnoYlkNnu/bgRznJl7aXQgigThtvwl6ZyWFGkoEnTz5o5EVuUkjFbfX+iEMI/Bw6GTZjaCkvew7QSeYmhMrJ+iflZXtRBA1dPLHo2XREXrUu9jLU/EzpqAWPJ8XRV3eXkSB9p8gje1zqaCL746iqMq/vRETNIIp+BlTUE1+jKCI/K2j/Sbo+HHVz/ETt8+lgi7efPcnwzLYgscJyMKw4ybCTgUJQxHb3G+CjhzXeee2IujizZ//dEhAF+f1n2mxY0GWL+PK/Sbo6BGD47fPKIJuUkW/eMn5fSK/+QzYuSCYCMBjYRlBlVKzYe1ZsoKOHLl3hgs6CYJuvnfw/cFV0gVBs1pk3bkgHjWwLV1QM/bYG9CO3d2jnWrp1NEMYEj2oPcOHrx16/1B50OAFA9K1aj0unHcibLVW1ruuHG3mj2jGcZuRx09TUF1ekAc5lRtRlAvvwclMwRlGGjbLc9rK6f2PYaa2SxZOpVj6Oi9k1IQ9XOQKfpl7ul8hBtlbXRDLgb5+tOIvZasobqeIKJj6r8beF6xYQqKkimxnwlRMoLABFS7IqhRJCpF2Mvfb1KKwndoD5zPkKVjp/J4wEe4ixe5H6bog1/lnA7vbZnv2OWhNlX1ktX31QQlNK8oq3teLCpVFbRl558ImILqaSWnggoB0YEXYy2ziNBORlkAnAoDBIEh1Q9T9JtfZ06H1uWre5p1Hf4SvqfXhFwEqpf1BDm0VMzKI0TvQX39AGOUNQSJrgJaUkGiCbS7y11b+fF84i1/ecAGfOzsuIZ3ydKhY/lQQxdPqn5A0W+N0ztarTLMZe201dKqpQMV3xLPaPcdmSBMJS3XkwlOviBxgNf2+QH6/Q0Q5Jd4G1mP1bxTQeus99b4nYcN7nvNgvdhiNInXd3XrBko6NiDjB92KTI6UaxWKmAKYk2Ph3oBXO7XW0qL5wfDJaQQcXe9NF/SYglbyUuvmiDezH1WoVtGk2fkrcU5PEkNEjZqsvf3y7JYUKqi2F8B/1obnClLhw8N4kHGD+UD/fThPShOIgk54PDKZ1fhquLKElUHFVNXWjxt0uWsIO3MMNNMcgQ5a8pPyQn8YLEBAvE1OD5S8h4pDJoOgwUtPvzw1lBBUHxb3ZMjqKO2SEtUUZxspFcK3ogjSzhMs61mBEGfTFp/lQcaaqVnBQVJXGYI2gjdml9zwzVwznuZL12JobQ1dr1OjKXDi/kcePjRR1lDt4xQbj39VoKw7SbA9+ywdxmJthi0IISVzHoNE2Ew2imxs20Kgh3QJQrdJFpQA2FTUBDqeSU/NExDDT70wl6YNPHseUYzWsnKY5Ag6uf0K6ahbJCwBeUf8JpVyKutZHQgYaypTB7V3MrCXGDmpAgqsL7GAo31pMM6rvZ+EdRrIBpKvKxOsBRBzWyoWEkLCCO3axZl1iwdPsBYPMCk0D8H+D8HHj46fdowlDsTasmvkqXG5WUmjezdRvbmMFS7NoOBiunzIU3NdMEQ1GSfXStMonfPfAok+zMlqaCmDBBT+DH8Fj47iGTKOGOEIIPFx49epX5euXRJGhqwlhDKr5KhAItcorq1S3jM9kT82qSFxy3eteB6rc5s6oYguIwHSf22sz14JEFCr90Jl0M3UAXBwylsdF5Wds6HXEGLDx+9ygVdvcoNDVyN41Gon5eUTGLXM50Mxo0ev9JrSyjiiZueqXTDEFRPm3zQzZuijCKIhx6eCO7ELSPxAdqOM9ZS45TIE7T4+MlXpCAwdOt3A285dAYNAlsO18BrUxvG4Wtv8OapmRN1BB1EjZwiQ1AywSX+gMv3KIKgHyvLVKogPjOIeEOo52UzK3IEHX745LVE0KWrH3/8YTY2UOFjQ3YtsSW9mDFZXfXgVNIE8MCiayKHIU7NECTWx+KBtwhGEVTTe0dHG83gMmm7g7OZFTmCHj95XRP0+5fpkRGtMQ70+eoONPB2Uu+CWvK1A+PEIOmMNX2M40ZVQdD6lV+TFRnj3MiCZNcXv64r+bhBJLO5mz+IjKDFx5+8ngqifv4wLAu+kEM89VId8TGIj18LukF+fFVuRUmCn3gQtSUTgoyghp5lj5T1sW4UQa4qOZk46YcZzWAeZAQ9/eRyIug07UF/HCEP8dwVvV6v0y9eaFbjsv7d+GSlBmO5eEiYdyhe8zE0/wUeVPFlY+4qhmXRBRFgaUs9fAmzDWPcFvQnP7OSMEQQjwpgOa8eJzrkYdVkTzRaRU4LQ9Ai+JE9aBQ9liV/hx+lXE4nFzIwaAhhtlhdoFcePq0U7dbxXdfTzmk4ZoK5mi2s0QPEcrYzriBLLqUr89X0uGQ9feSqnA6GoKd/upIK+rQy/HzOun5rkqPEZ2tmWrL4GBn7i8m1ZMM8wxSUmWVmVxKGCdJ/eDvQBYlWN89JKkMXxPxcFkPcp38eJ5/YrK9Auyg0tTt2wZpMqGrnKW+WrCnNuhyLSlXvqDa0LG39wZyRBKk9nw7HhiDRweb9wI8miPq5cpn3oL/+ZcyMGl11YcuOzPSuvHfqaI2yH6fe9JtuMsErdURVwRqckyzrhDLLshnl8xt2uQVVXz+pyjLbBT4bUAYNuMzN6oGygaiCnn527Qr0oNfG1gPUQ9dveXYtNoNeTjX2Pc+Ps1PLyKUJtU42nF1u257trgtXrOOsMTJZZh8IakS9XpS/hlvt0SS5dNerBeydwIhtsgTlQBA310kqQxFE/VzjPehv8y6VSdsYfSZKP/92dmdwJ5wlqSDmBwR9Pu8ycdRuwUaiWa/5w/g5xxtBAinoxWfPQNDe0NPslJXKWZjD1QAm0fO8ESRIBL344hkT9PlYodvUgFliWU5s4Lqe8+TpNIGQYV5PKyoIQczPs2t//8e8i5MA0VWZO6l7c2jMsNLuDD9u6nBBL754/uzZ3tEj56meG7viyeAZdyBzHXdugCDq5/mzf867KBrme+Mzriv+2MheeOGhcoj6+ffz5/+ad0FMonn64Ve9+d4ISnjzMPXzn3mXIodm+li9N+PxTbSO+d4Ikrzx3z3XewT1bs0LPD9niWHaRF3KHgjhEARBEARBEARBEARBEARBEARBEARBEARBEARBEARBEASZFf8DEJR9rKQdeJIAAAAASUVORK5CYII=" alt="google playstore logo">
+        </a>
+        </div>
+      </div>
+      <!-- Copyright -->
+      <div class="text-center mt-4">
+        <p>Studentsamskipnaden SiO © 2023</p>
+        <a href="index.html">index.html</index></a>
+      </div>
+    </div>
+  </footer>
+    
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // This event listener ensures the code inside is executed after the DOM is fully loaded
+      document.addEventListener('DOMContentLoaded', (event) => {
+        // Get the filter button and the filter menu elements by their IDs
+        const filterButton = document.getElementById('filterButton');
+        const filterMenu = document.getElementById('filterMenu');
+    
+        // Add a click event listener to the filter button
+        filterButton.addEventListener('click', function() {
+          // Toggle the display property between 'none' and 'block'
+          if (filterMenu.style.display === 'none' || filterMenu.style.display === '') {
+            filterMenu.style.display = 'block';
+          } else {
+            filterMenu.style.display = 'none';
+          }
+        });
+      });
+    </script>
+
+</body>
+</html>
