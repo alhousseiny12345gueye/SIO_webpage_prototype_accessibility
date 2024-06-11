@@ -36,9 +36,6 @@ jobs:
           echo 'Running axe'
           axe http://localhost:3000 --dir public/a11y_reports --save axe_a11y_report.json > axe.log
 
-          echo 'Running create-report.js script'
-          node create-report.js
-
       - name: Wait for the file to be fully written
         run: sleep 10
 
