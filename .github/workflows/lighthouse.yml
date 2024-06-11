@@ -1,0 +1,38 @@
+name: Lighthouse
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+jobs:
+  Lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js 
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+      - name: Install http-server and Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.7.x http-server
+      - name: Start http-server
+        run: |
+          http-server . -p 8080 &
+          sleep 3 # wait for the server to start
+      - name: Check Chrome version
+        run: google-chrome-stable --version
+      - name: Run Lighthouse CI
+        run: |
+          lhci autorun --collect.url=http://localhost:8080/index.html --upload.target=temporary-public-storage
+      - name: Save lighthouse reports
+        run: |
+          mkdir -p public/a11y_reports/lighthouse
+          cp -r .lighthouseci/* public/a11y_reports/lighthouse
+      - name: Archive lighthouse accessibility report as an artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse accessibility report 
+          path: public/a11y_reports/lighthouse
+#      - name: Fail if accessibility issues were found
+#        run: grep -q "\"score\":1" public/a11y_reports/lighthouse/lhr-*.report.html || exit 1
