@@ -1,0 +1,49 @@
+name: the other Lighthouse
+
+on: [push]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 'lts/*'
+
+      - name: Install http-server
+        run: npm install -g http-server
+
+      - name: Start server
+        run: |
+          http-server . -p 5000 &
+          sleep 3 # wait for the server to start
+
+      - name: Create directory for Lighthouse reports
+        run: mkdir -p ${{ github.workspace }}/tmp/artifacts
+
+      - name: Run Lighthouse
+        uses: foo-software/lighthouse-check-action@master
+        id: lighthouseCheck
+        with:
+          outputDirectory: ${{ github.workspace }}/tmp/artifacts
+          urls: 'http://localhost:5000/index.html'
+
+      - name: Upload Lighthouse reports as workflow artifacts
+        uses: actions/upload-artifact@master
+        with:
+          name: Lighthouse reports
+          path: ${{ github.workspace }}/tmp/artifacts
+
+      - name: Verify Lighthouse Check results
+        uses: foo-software/lighthouse-check-status-action@master
+        with:
+          lighthouseCheckResults: ${{ steps.lighthouseCheck.outputs.lighthouseCheckResults }}
+          minAccessibilityScore: "90"
+          minBestPracticesScore: "50"
+          minPerformanceScore: "50"
+          minProgressiveWebAppScore: "50"
+          minSeoScore: "50"

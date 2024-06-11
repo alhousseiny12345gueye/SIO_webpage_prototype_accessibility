@@ -1,0 +1,53 @@
+name: axe
+
+on: 
+  push:
+    branches: [master]
+
+jobs:
+  axe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'
+
+      - run: npm install
+
+      - name: Install http-server
+        run: npm install -g http-server
+
+      - name: Start server
+        run: |
+          http-server . -p 3000 &
+          sleep 3 # wait for the server to start
+
+      - name: Check server and run axe
+        run: |
+          echo 'Creating reports directory'
+          mkdir -p public/a11y_reports
+
+          echo 'Installing packages'
+          npm install -g @axe-core/cli
+          npm install axe-html-reporter
+
+          echo 'Running axe'
+          axe http://localhost:3000 --dir public/a11y_reports --save axe_a11y_report.json > axe.log
+
+          echo 'Running create-report.js script'
+          node create-report.js
+
+      - name: Wait for the file to be fully written
+        run: sleep 10
+
+      - name: Archive axe accessibility report as an artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: axe accessibility report 
+          path: public/a11y_reports/axe_a11y_report.html
+
+      - name: Fail if accessibility issues were found
+        run: grep -q "0 violations found" axe.log || exit 1
